@@ -1,4 +1,6 @@
+import { inject } from '@vercel/analytics';
 import * as THREE from 'three';
+inject({ mode: import.meta.env.PROD ? 'production' : 'development' });
 const $=s=>document.querySelector(s);
 const renderer=new THREE.WebGLRenderer({canvas:$('#game'),antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<650?1.5:2));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;
 const scene=new THREE.Scene();scene.background=new THREE.Color('#c5d5d0');scene.fog=new THREE.Fog('#c5d5d0',38,115);
